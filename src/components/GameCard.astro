@@ -1,0 +1,24 @@
+---
+// src/components/GameCard.astro
+const { id, title, description, jamResult, sessions, itchUrl } = Astro.props;
+---
+<div class="cyber-card relative group">
+  <div class="absolute top-0 right-0 bg-cyberpurple/20 text-cyberpurple text-[10px] px-2 py-0.5 border-b border-l border-cyberpurple/30 font-bold">
+    {id}
+  </div>
+  <h3 class="font-sans text-xl font-bold group-hover:text-cybercyan transition-colors">{title}</h3>
+  <p class="text-gray-400 text-xs mt-2 mb-6">{description}</p>
+  <div class="grid grid-cols-2 gap-4 border-t border-b border-white/5 py-3 my-4 text-sm">
+    <div>
+      <span class="cyber-label block">Результат джема:</span>
+      <span class="text-cybercyan font-bold">{jamResult}</span>
+    </div>
+    <div>
+      <span class="cyber-label block">Сыграно сессий:</span>
+      <span class="text-white font-bold">{sessions}</span>
+    </div>
+  </div>
+  <a href={itchUrl} target="_blank" class="inline-flex items-center text-xs text-cyberpurple group-hover:text-white transition-colors gap-2 mt-2">
+    Смотреть на Itch.io <span class="group-hover:translate-x-1 transition-transform">→</span>
+  </a>
+</div>

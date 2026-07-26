@@ -1,0 +1,73 @@
+@import url('https://googleapis.com');
+@import "tailwindcss";
+
+
+@theme {
+  --color-cyberbg: #0B0B0F;
+  --color-cyberpurple: #A200FF;
+  --color-cybercyan: #00F5D4;
+  
+  --font-sans: 'Space Grotesk', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+/* Переменная для киберпанк-карточек */
+@utility cyber-card {
+  background-color: #111116;
+  border: 1px solid rgba(162, 0, 255, 0.3);
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  clip-path: polygon(0 0, 100% 0, 100% 90%, 93% 100%, 0 100%);
+  
+  &:hover {
+    border-color: var(--color-cyberpurple);
+    box-shadow: 0 0 15px rgba(162, 0, 255, 0.1);
+  }
+}
+
+/* Переменная для кнопок связи */
+@utility cyber-link-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: var(--color-cyberbg);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-color: var(--color-cyberpurple);
+  }
+}
+
+/* Переменная для технических меток */
+@utility cyber-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #6b7280;
+}
+
+.blinking-cursor {
+  color: var(--color-cybercyan); /* Замени на свой точный бирюзовый HEX */
+  /* 2s - это время полного цикла. Увеличь для более медленного эффекта */
+  animation: pulse-blink 2s ease-in-out infinite; 
+}
+
+@keyframes pulse-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes neon-flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    text-shadow: 0 0 4px #fff, 0 0 10px #A200FF, 0 0 20px #A200FF;
+  }
+  20%, 24%, 55% {
+    text-shadow: none;
+  }
+}
+
+.animate-neon {
+  animation: neon-flicker 3s infinite alternate;
+}

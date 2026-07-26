@@ -1,0 +1,242 @@
+--- 
+import '../styles/global.css';
+import Footer from '../components/footer.astro';
+import Header from '../components/header.astro';
+
+import GameCard from '../components/GameCard.astro';
+
+// Массив ваших проектов с джемов для itch.io
+const games = [
+  {
+    id: "PROJECT_01",
+    title: "Ghost Protocol",
+    description: "Киберпанковый мир и вы в нем выступаете в роли фиксера, который выдает задания претендентам на звание легенды.",
+    jamResult: "Лучший звук (2024)",
+    sessions: "1,200+",
+    itchUrl: "https://itch.io"
+  },
+  {
+    id: "PROJECT_02",
+    title: "Shattered",
+    description: "Короткое емкое описание сути игры, жанра и сеттинга. Буквально в двух предложениях.",
+    jamResult: "Top 5% (Design)",
+    sessions: "1,200+",
+    itchUrl: "https://itch.io"
+  },
+  {
+    id: "PROJECT_03",
+    title: "PROJECT D0P3L",
+    description: "Решайте головоломки, используя тела своих жертв.",
+    jamResult: "53 место",
+    sessions: "1,200+",
+    itchUrl: "https://itch.io"
+  },
+];
+---
+
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tengri Realm | Pitch</title>
+  </head>
+  <body class="bg-cyberbg text-white font-mono antialiased selection:bg-cyberpurple selection:text-black">
+    
+    <!-- Сетка на фоне -->
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#14141a_1px,transparent_1px),linear-gradient(to_bottom,#14141a_1px,transparent_1px)] bg-size-[4rem_4rem] mask-[radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] -z-10"></div>
+        <!-- ВЕРХНЯЯ ШАПКА САЙТА (HEADER) -->
+    <Header />
+
+    <main class="max-w-6xl mx-auto px-6 py-20">
+      
+      <!-- HERO СЕКЦИЯ -->
+      <section class="text-center my-16 space-y-6">
+        <div class="inline-block text-xs uppercase tracking-widest text-cybercyan border border-cybercyan/30 px-3 py-1 bg-cybercyan/5">
+          // Студия разработки следующего поколения
+        </div>
+        <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight bg-clip-text text-transparent bg-linear-to-r from-white via-purple-200 to-cyberpurple animate-neon">
+          Превращаем ваши <br/>медиафраншизы в видеоигры
+        </h1>
+        <p class="text-gray-400 max-w-xl mx-auto text-sm md:text-base">
+          B2B-разработка игр на базе вашего IP. Используем ваши готовые концепты, арт и лор, чтобы радикально сократить стоимость и сроки разработки.
+        </p>
+        <div class="pt-4">
+          <a href="#contacts" class="inline-block bg-cyberpurple hover:bg-purple-700 text-white font-bold px-8 py-4 uppercase tracking-wider transition-all duration-300 shadow-[0_0_15px_#A200FF] hover:scale-105" style="clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);">
+            Связаться с нами
+          </a>
+        </div>
+      </section>
+
+      <!-- БЛОК ПРОЕКТОВ -->
+      <section id="projects" class="mt-32">
+        <h2 class="text-2xl font-bold uppercase tracking-wider text-cyberpurple mb-10 flex items-center gap-3">
+          <span class="w-2 h-6 bg-cybercyan inline-block"></span> Наше портфолио (Itch.io)
+        </h2>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          {games.map((game) => (
+            <GameCard 
+              id={game.id}
+              title={game.title}
+              description={game.description}
+              jamResult={game.jamResult}
+              sessions={game.sessions}
+              itchUrl={game.itchUrl}
+            />
+          ))}
+        </div>
+
+      </section>
+
+      <!-- стек -->
+      <section id="tech" class="mt-32 scroll-mt-24">
+        <h2 class="text-2xl font-bold uppercase tracking-wider text-cyberpurple mb-10 flex items-center gap-3">
+          <span class="w-2 h-6 bg-cybercyan inline-block"></span> Спецификация ядра / Стек
+        </h2>
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <!-- Карточка движка Unity -->
+          <div class="bg-[#111116] border border-white/5 p-6 text-center hover:border-cybercyan transition-all group">
+            <div class="text-2xl mb-2 text-gray-500 group-hover:text-cybercyan transition-colors font-bold">🎮 Godot</div>
+            <div class="cyber-label">// Основной движок</div>
+            <div class="text-[11px] text-gray-400 mt-2">C# / Сборка под PC & WebGL</div>
+          </div>
+
+          <!-- Blender -->
+          <div class="bg-[#111116] border border-white/5 p-6 text-center hover:border-cybercyan transition-all group">
+            <div class="text-2xl mb-2 text-gray-500 group-hover:text-cybercyan transition-colors font-bold">📐 Blender</div>
+            <div class="cyber-label">// 3D Моделирование</div>
+            <div class="text-[11px] text-gray-400 mt-2">Low-poly / Пропсы и HUD</div>
+          </div>
+
+          <!-- FMOD -->
+          <div class="bg-[#111116] border border-white/5 p-6 text-center hover:border-cybercyan transition-all group">
+            <div class="text-2xl mb-2 text-gray-500 group-hover:text-cybercyan transition-colors font-bold">🔊 FMOD</div>
+            <div class="cyber-label">// Аудио движок</div>
+            <div class="text-[11px] text-gray-400 mt-2">Интерактивный адаптивный звук</div>
+          </div>
+
+          <!-- Astro -->
+          <div class="bg-[#111116] border border-white/5 p-6 text-center hover:border-cybercyan transition-all group">
+            <div class="text-2xl mb-2 text-gray-500 group-hover:text-cybercyan transition-colors font-bold">🚀 Astro</div>
+            <div class="cyber-label">// Сетевой интерфейс</div>
+            <div class="text-[11px] text-gray-400 mt-2">Этот веб-терминал студии</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- пайплайн -->
+    <section id="pipeline" class="mt-32 mx-auto pt-6">
+  <h2 class="text-2xl font-bold uppercase tracking-wider text-cyberpurple mb-4 flex items-center gap-3">
+    <span class="w-2 h-6 bg-cybercyan inline-block"></span> Пайплайн разработки по IP
+  </h2>
+  <p class="text-gray-400 text-sm mb-12">Как мы превращаем ваши готовые наработки в играбельный продукт без лишних затрат на пре-продакшен.</p>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 relative pt-4">
+    
+    <div class="cyber-card relative pt-8 border-cybercyan/40 bg-cyberbg/80 group hover:border-cybercyan transition-colors">
+      <span class="absolute -top-3 left-6 px-3 py-2.5 text-[10px] font-bold uppercase tracking-widest bg-cyberbg border border-cybercyan text-cybercyan shadow-[0_0_8px_#00F5D4]">
+        01 // ВХОДНЫЕ ДАННЫЕ
+      </span>
+      
+      <h3 class="text-lg font-bold text-white mb-2">Ваша Вселенная (IP)</h3>
+      <p class="text-gray-400 text-xs mb-4">Вы предоставляете то, что у вас уже есть, экономя месяцы работы художников и сценаристов:</p>
+      
+      <ul class="text-xs font-mono text-gray-300 space-y-2">
+        <li class="flex items-center gap-2"><span class="text-cybercyan">></span> Концепты и персонажи</li>
+        <li class="flex items-center gap-2"><span class="text-cybercyan">></span> Готовый арт и ассеты</li>
+        <li class="flex items-center gap-2"><span class="text-cybercyan">></span> Лор и сеттинг мира</li>
+      </ul>
+    </div>
+
+    <div class="cyber-card relative pt-8 border-cyberpurple/60 bg-cyberbg/80 group hover:border-cyberpurple transition-colors shadow-[0_0_15px_rgba(162,0,255,0.15)]">
+      <span class="absolute -top-3 left-6 px-3 py-2.5 text-[10px] font-bold uppercase tracking-widest bg-cyberbg border border-cyberpurple text-cyberpurple shadow-[0_0_8px_#A200FF]">
+        02 // ПАЙПЛАЙН СТУДИИ
+      </span>
+      
+      <h3 class="text-lg font-bold text-white mb-2">Интеграция и Код</h3>
+      <p class="text-gray-400 text-xs mb-4">Мы берем техническую часть на себя, собирая ваш контент в работающий интерактив:</p>
+      
+      <ul class="text-xs font-mono text-gray-300 space-y-2">
+        <li class="flex items-center gap-2"><span class="text-cyberpurple">></span> Настройка движка и физики</li>
+        <li class="flex items-center gap-2"><span class="text-cyberpurple">></span> Проектирование геймплея</li>
+        <li class="flex items-center gap-2"><span class="text-cyberpurple">></span> Сборка игрового прототипа</li>
+      </ul>
+    </div>
+
+    <div class="cyber-card relative pt-8 border-white/20 bg-cyberbg/80 group hover:border-white transition-colors">
+      <span class="absolute -top-3 left-6 px-3 py-2.5 text-[10px] font-bold uppercase tracking-widest bg-cyberbg border border-white text-white shadow-[0_0_8px_rgba(255,255,255,0.4)]">
+        03 // РЕЗУЛЬТАТ
+      </span>
+      
+      <h3 class="text-lg font-bold text-white mb-2">Готовый Продукт</h3>
+      <p class="text-gray-400 text-xs mb-4">Вы получаете мощный инструмент для расширения своей аудитории и монетизации франшизы:</p>
+      
+      <ul class="text-xs font-mono text-gray-300 space-y-2">
+        <li class="flex items-center gap-2"><span class="text-white">></span> Играбельный вертикальный срез</li>
+        <li class="flex items-center gap-2"><span class="text-white">></span> Вовлечение фанатов франшизы</li>
+        <li class="flex items-center gap-2"><span class="text-white">></span> Новый канал монетизации IP</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+      <!-- ТЕРМИНАЛ СВЯЗИ -->
+      <section id="contacts" class="mt-32 max-w-2xl mx-auto">
+        <div class="relative bg-[#111116] border-2 border-cybercyan/40 p-8 shadow-[0_0_20px_rgba(0,245,212,0.1)]" style="clip-path: polygon(4% 0, 100% 0, 100% 92%, 96% 100%, 0 100%, 0 8%);">
+          
+          <div class="mb-8 border-b border-white/5 pb-4">
+            <h2 class="text-xl font-bold uppercase tracking-wider text-cybercyan flex items-center gap-2">
+              <span class="inline-block w-2 h-2 bg-cybercyan animate-pulse"></span> ТЕРМИНАЛ СВЯЗИ
+            </h2>
+            <p class="text-xs text-gray-400 mt-1">// Прямые каналы для предложений, питчей и инвестиций.</p>
+          </div>
+
+          <div class="grid gap-4">
+            <!-- Email -->
+            <a href="mailto:your-email@studio.com" class="cyber-link-row group">
+              <div class="flex items-center gap-3">
+                <span class="text-cyberpurple group-hover:text-cybercyan transition-colors">[EMAIL]</span>
+                <span class="text-sm font-bold tracking-wide">your-email@studio.com</span>
+              </div>
+              <span class="text-xs text-gray-500 group-hover:text-white transition-colors">НАПИСАТЬ →</span>
+            </a>
+
+            <!-- Telegram -->
+            <a href="https://t.me" target="_blank" class="cyber-link-row group">
+              <div class="flex items-center gap-3">
+                <span class="text-cyberpurple group-hover:text-cybercyan transition-colors">[TELEGRAM]</span>
+                <span class="text-sm font-bold tracking-wide">@mykweenn</span>
+              </div>
+              <span class="text-xs text-gray-500 group-hover:text-white transition-colors">ОТКРЫТЬ ЧАТ →</span>
+            </a>
+
+            <!-- LinkedIn -->
+            <a href="https://linkedin.com" target="_blank" class="cyber-link-row group">
+              <div class="flex items-center gap-3">
+                <span class="text-cyberpurple group-hover:text-cybercyan transition-colors">[LINKEDIN]</span>
+                <span class="text-sm font-bold tracking-wide">Профиль основателя</span>
+              </div>
+              <span class="text-xs text-gray-500 group-hover:text-white transition-colors">СМОТРЕТЬ →</span>
+            </a>
+
+            <!-- X / Twitter -->
+            <a href="https://x.com" target="_blank" class="cyber-link-row group">
+              <div class="flex items-center gap-3">
+                <span class="text-cyberpurple group-hover:text-cybercyan transition-colors">[X_TWITTER]</span>
+                <span class="text-sm font-bold tracking-wide">Профиль студии</span>
+              </div>
+              <span class="text-xs text-gray-500 group-hover:text-white transition-colors">СМОТРЕТЬ →</span>
+            </a>
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+    
+    <Footer />
+
+  </body>
+</html>
