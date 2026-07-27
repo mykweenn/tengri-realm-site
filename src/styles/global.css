@@ -11,6 +11,7 @@
   --font-mono: 'JetBrains Mono', monospace;
 }
 
+
 /* Переменная для киберпанк-карточек */
 @utility cyber-card {
   background-color: #111116;
